@@ -1,7 +1,13 @@
 class ArticlesController < ApplicationController
+
+  http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
+
   def index
     @articles = Article.all
   end
+
+  # snippet for brevity
+
 
   def show
     @article = Article.find(params[:id])
@@ -43,7 +49,9 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :status)
   end
+
 end
