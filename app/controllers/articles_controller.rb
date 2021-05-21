@@ -2,12 +2,15 @@ class ArticlesController < ApplicationController
 
   http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
 
+  before_action :authenticate_model!, only: %i[new create edit destroy update]
+  before_action :set_article, only: %i[show edit destroy update]
+  before_action :authorize_model!, only: %i[edit destroy update]
+
+  ARTICLES_PER_PAGE = 3
   def index
-    @articles = Article.all
+    @page = params.fetch(:page,0).to_i
+    @articles = Article.offset(@page*ARTICLES_PER_PAGE).limit(ARTICLES_PER_PAGE)
   end
-
-  # snippet for brevity
-
 
   def show
     @article = Article.find(params[:id])
@@ -52,6 +55,10 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 
 end
