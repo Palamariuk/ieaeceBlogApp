@@ -4,5 +4,5 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :validatable
 
-  has_many :articles, foreign_key: :author_id, inverse_of: :author
+  has_many :articles, foreign_key: :author_id, dependent: :destroy
 end
