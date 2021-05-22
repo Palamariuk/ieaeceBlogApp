@@ -4,10 +4,11 @@ class ArticlesController < ApplicationController
 
   before_action :authenticate_account!, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[show edit destroy update]
-  before_action :authorize_account!, only: %i[edit destroy update]
 
   ARTICLES_PER_PAGE = 3
   def index
+    authorize Article
+
     @page = params.fetch(:page,0).to_i
     @articles = Article.ordered
                        .with_authors
@@ -16,16 +17,23 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    authorize @article
+    
     @article = Article.find(params[:id])
   end
 
   def new
+    authorize Article
+
     @article = Article.new
   end
 
   def create
+    authorize @article
+
     @article = Article.new(article_params)
     @article.author = current_account
+    @article.author.username = current_account.username
 
     if @article.save
       redirect_to @article
@@ -35,10 +43,14 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    authorize @article
+
     @article = Article.find(params[:id])
   end
 
   def update
+    authorize @article
+
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
@@ -49,6 +61,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    authorize @article
+
     @article = Article.find(params[:id])
     @article.destroy
 
@@ -61,7 +75,6 @@ class ArticlesController < ApplicationController
     # code here
   end
 
-  private
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
@@ -71,11 +84,5 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def authorize_account!
-    return if  @article.author_id == current_account.id
-
-    redirect_to :edit_article,
-                alert: "You are not allowed to edit this post. Please, write your own :)"
-  end
 
 end

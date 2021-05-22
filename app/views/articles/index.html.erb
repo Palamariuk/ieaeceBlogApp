@@ -17,6 +17,15 @@ Our blog has <%= Article.public_count %> articles and counting!
     <h3><%= link_to article.title, article %></h3>
     <i>Author: <%= article.author.username %> | Created: <%= article.created_at %></i>
     <p><%= article.body %></p>
+    <% if policy(article).update? %>
+      <%= link_to "Edit", edit_article_path(article) %> |
+    <% end %>
+
+    <% if policy(article).destroy? %>
+      <%= link_to "Destroy", article_path(article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+    <% end %>
   </div>
 <% end %>
 
@@ -25,9 +34,9 @@ Our blog has <%= Article.public_count %> articles and counting!
 
 
 <style>
-  .article{
-      border-left: 5px solid cornflowerblue;
-      padding-left: 10px;
-      background: #cfdaec;
-  }
+    .article {
+        border-left: 5px solid cornflowerblue;
+        padding-left: 10px;
+        background: #cfdaec;
+    }
 </style>
