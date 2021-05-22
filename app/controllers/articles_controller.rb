@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   before_action :authenticate_account!, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[show edit destroy update]
-  #before_action :authorize_model!, only: %i[edit destroy update]
+  before_action :authorize_account!, only: %i[edit destroy update]
 
   ARTICLES_PER_PAGE = 3
   def index
@@ -39,12 +39,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    unless @article.author_id == current_account.id
-      redirect_to :edit_article,
-                  alert: "You are not allowed to edit this post. Please, write your own :)"
-      return
-    end
-
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
@@ -63,12 +57,25 @@ class ArticlesController < ApplicationController
 
   private
 
+  def authenticate_account!
+    # code here
+  end
+
+  private
+
   def article_params
     params.require(:article).permit(:title, :body, :status)
   end
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def authorize_account!
+    return if  @article.author_id == current_account.id
+
+    redirect_to :edit_article,
+                alert: "You are not allowed to edit this post. Please, write your own :)"
   end
 
 end
