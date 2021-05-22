@@ -9,7 +9,10 @@ class ArticlesController < ApplicationController
   ARTICLES_PER_PAGE = 3
   def index
     @page = params.fetch(:page,0).to_i
-    @articles = Article.order(created_at: :desc).offset(@page * ARTICLES_PER_PAGE).limit(ARTICLES_PER_PAGE)
+    @articles = Article.ordered
+                       .with_authors
+                       .offset(@page * ARTICLES_PER_PAGE)
+                       .limit(ARTICLES_PER_PAGE)
   end
 
   def show
