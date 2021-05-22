@@ -39,6 +39,12 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    unless @article.author_id == current_account.id
+      redirect_to :edit_article,
+                  alert: "You are not allowed to edit this post. Please, write your own :)"
+      return
+    end
+
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
