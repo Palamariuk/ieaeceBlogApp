@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
+  #http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
 
-  before_action :authenticate_model!, only: %i[new create edit destroy update]
+  before_action :authenticate_account!, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[show edit destroy update]
-  before_action :authorize_model!, only: %i[edit destroy update]
+  #before_action :authorize_model!, only: %i[edit destroy update]
 
   ARTICLES_PER_PAGE = 3
   def index
@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.author = current_account
 
     if @article.save
       redirect_to @article
