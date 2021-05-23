@@ -14,6 +14,9 @@ class ArticlesController < ApplicationController
                        .with_authors
                        .offset(@page * ARTICLES_PER_PAGE)
                        .limit(ARTICLES_PER_PAGE)
+                       .search(params[:query])
+
+
   end
 
   def show

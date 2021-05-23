@@ -2,4 +2,11 @@
 
 Our blog has <%= Article.public_count %> public articles!
 
+<%= form_with method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query, value: params[:query] %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
 <%= render 'articles', articles: @articles %>
