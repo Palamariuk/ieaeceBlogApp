@@ -18,8 +18,6 @@ class ArticlePolicy < ApplicationPolicy
   private
 
   def author?
-    return false unless user
-
-    record.author_id == user.id
+    user_logged_in? && record.author_id == user.id
   end
 end

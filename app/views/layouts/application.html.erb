@@ -14,8 +14,13 @@
 
 <body>
 <header>
+  <br>
   <% if account_signed_in? %>
-    <%= current_account.email %>
+    <%= current_account.username %>
+    <% if current_account.admin? %>
+      (admin)
+    <% end %>
+    |
     <%= link_to 'Log out', destroy_account_session_path, method: :delete, data: { confirm: "Are you sure?" } %>
   <% else %>
     <%= link_to 'Log in', new_account_session_path %>

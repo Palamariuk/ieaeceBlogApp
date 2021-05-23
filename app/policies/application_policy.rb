@@ -49,9 +49,11 @@ class ApplicationPolicy
 
   private
 
-  def admin?
-    return false unless user
+  def user_logged_in?
+    !!user
+  end
 
-    user.admin?
+  def admin?
+    user_logged_in? && user.admin?
   end
 end
