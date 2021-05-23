@@ -9,6 +9,10 @@
 + admin mode - 1
 + searching - 2 
 
+### Additional tasks: 
+
++ likes
+
 ## Total for now: 
 
 ​			15 points / 20
@@ -19,4 +23,3 @@
 + images
 + filtering 
 + sorting
-+ likes

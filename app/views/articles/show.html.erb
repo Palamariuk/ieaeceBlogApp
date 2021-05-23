@@ -12,6 +12,14 @@
                   data: { confirm: "Are you sure?" } %></li>
 </ul>
 
+<% pre_like = @article.likes.find { |like| like.account_id == current_account.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', article_like_path(@article, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', article_likes_path(@article), method: :post %>
+<% end %>
+<p><%= @article.likes.count %> <%= (@article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
 <h2>Comments</h2>
 <%= render @article.comments %>
 

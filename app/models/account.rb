@@ -5,6 +5,7 @@ class Account < ApplicationRecord
          :recoverable, :validatable
 
   has_many :articles, foreign_key: :author_id, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   ROLES = {
     user: 0,
