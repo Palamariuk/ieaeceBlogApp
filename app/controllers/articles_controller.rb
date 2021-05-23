@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    authorize @article
+    authorize Article
 
     @article = Article.new(article_params)
     @article.author = current_account
