@@ -7,16 +7,16 @@
 + authentication - 2
 + authorization - 3
 + admin mode - 1
++ searching - 2 
 
 ## Total for now: 
 
-​			13 points / 20
+​			15 points / 20
 
 ## In progress:
 
 + docker
 + images
-+ searching 
 + filtering 
 + sorting
 + likes
