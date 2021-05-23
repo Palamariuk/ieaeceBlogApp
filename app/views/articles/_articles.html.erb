@@ -1,9 +1,6 @@
-<div>
-  <%= link_to 'Previous page', root_path(page: @page > 0 ? @page - 1 : @page) %>
-  |
-  <%= link_to 'Next page', root_path(page: @page < articles.count.div(ArticlesController::ARTICLES_PER_PAGE) ? @page + 1 : @page) %>
+<<div>
+  <%= will_paginate @articles %>
 </div>
-<br>
 
 <% articles.each do |article| %>
   <div class="article">
@@ -22,7 +19,9 @@
   </div>
 <% end %>
 
-<br>
+<<div>
+  <%= will_paginate @articles %>
+</div>
 
 
 

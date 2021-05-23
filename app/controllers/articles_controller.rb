@@ -12,8 +12,7 @@ class ArticlesController < ApplicationController
     @page = params.fetch(:page,0).to_i
     @articles = Article.ordered
                        .with_authors
-                       .offset(@page * ARTICLES_PER_PAGE)
-                       .limit(ARTICLES_PER_PAGE)
+                       .paginate(:page => params[:page], per_page: ARTICLES_PER_PAGE)
                        .search(params[:query])
 
 
