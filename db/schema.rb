@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_23_165914) do
+ActiveRecord::Schema.define(version: 2021_05_23_175502) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_05_23_165914) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
     t.integer "author_id"
+    t.string "image"
     t.index ["author_id"], name: "index_articles_on_author_id"
   end
 

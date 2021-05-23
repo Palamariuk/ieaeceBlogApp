@@ -33,9 +33,17 @@ class ArticlesController < ApplicationController
   def create
     authorize Article
 
-    @article = Article.new(article_params)
+    @article = Article.new
+    @article.title = article_params[:title]
+    @article.body = article_params[:body]
+    @article.status = article_params[:status]
     @article.author = current_account
     @article.author.username = current_account.username
+
+    unless article_params[:image].nil?
+      image = Cloudinary::Uploader.upload(article_params[:image], options = {})
+      @article.image = image['secure_url']
+    end
 
     if @article.save
       redirect_to @article
@@ -79,7 +87,7 @@ class ArticlesController < ApplicationController
 
 
   def article_params
-    params.require(:article).permit(:title, :body, :status)
+    params.require(:article).permit(:title, :body, :status, :image)
   end
 
   def set_article

@@ -14,6 +14,13 @@
       <div><%= message %></div>
     <% end %>
   </div>
+
+  <div>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %><br>
+  </div>
+
+
   <div>
     <%= form.label :status %><br>
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>

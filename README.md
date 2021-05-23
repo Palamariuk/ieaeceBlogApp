@@ -8,6 +8,8 @@
 + authorization - 3
 + admin mode - 1
 + searching - 2 
++ images - 2
++ cloud - 2
 
 ### Additional tasks: 
 
@@ -15,11 +17,10 @@
 
 ## Total for now: 
 
-​			15 points / 20
+​			19 points / 20
 
 ## In progress:
 
 + docker
-+ images
 + filtering 
 + sorting
