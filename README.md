@@ -22,5 +22,4 @@
 ## In progress:
 
 + docker
-+ filtering 
 + sorting
