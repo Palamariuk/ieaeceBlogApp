@@ -1,11 +1,30 @@
-<h1>Articles | <%= link_to "New", new_article_path %></h1>
+<h1 >Articles | <%= link_to "New", new_article_path %></h1>
 
 Our blog has <%= Article.public_count %> public articles!
 
-<%= form_with method: :get do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query, value: params[:query] %>
+<%= form_with method: :get, html: {class: "search-form"} do |form| %>
+  <p>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query, value: params[:query] %>
+  </p>
+
+  <p>
+    Order:
+    <%= form.radio_button :sort, "asc" %>
+    <%= form.label :sort_order, "Oldest" %>
+    <%= form.radio_button :sort, "desc", checked: true %>
+    <%= form.label :sort_order, "Newest"%>
+  </p>
+
   <%= form.submit "Search" %>
 <% end %>
 
-<%= render 'articles', articles: @articles %>
+<%= render 'articles', articles: @articles%>
+
+<style>
+  .search-form{
+      margin: 5px;
+      padding: 5px;
+      background: #bdcfee;
+  }
+</style>

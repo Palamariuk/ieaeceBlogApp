@@ -6,21 +6,23 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit destroy update]
 
   ARTICLES_PER_PAGE = 3
+
   def index
     authorize Article
 
-    @page = params.fetch(:page,0).to_i
-    @articles = Article.ordered
+    @page = params.fetch(:page, 0).to_i
+    @sortorder = params.fetch(:sort, 'desc')
+    @query = "created_at #{@sortorder}"
+    @articles = Article.order(@query)
                        .with_authors
-                       .paginate(:page => params[:page], per_page: ARTICLES_PER_PAGE)
+                       .paginate(page: params[:page], per_page: ARTICLES_PER_PAGE)
                        .search(params[:query])
-
 
   end
 
   def show
     authorize @article
-    
+
     @article = Article.find(params[:id])
   end
 
@@ -85,7 +87,6 @@ class ArticlesController < ApplicationController
     # code here
   end
 
-
   def article_params
     params.require(:article).permit(:title, :body, :status, :image)
   end
@@ -93,6 +94,5 @@ class ArticlesController < ApplicationController
   def set_article
     @article = Article.find(params[:id])
   end
-
 
 end

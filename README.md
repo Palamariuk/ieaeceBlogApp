@@ -10,6 +10,7 @@
 + searching - 2 
 + images - 2
 + cloud - 2
++ sorting - 2 
 
 ### Additional tasks: 
 
@@ -17,9 +18,9 @@
 
 ## Total for now: 
 
-​			19 points / 20
+​			21 points / 20 + likes
 
 ## In progress:
 
 + docker
-+ sorting
+

@@ -7,7 +7,7 @@
     <h3><%= link_to article.title, article %></h3>
     <i>Author: <%= article.author.username %> | Created: <%= article.created_at %></i>
     <p class="body-text"><%= article.body %></p>
-    <img src="<%= article.image %>" alt="Some image..." width="20%">
+    <img src="<%= article.image %>" alt="" width="20%">
     <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
     <% if policy(article).update? %>
       <%= link_to "Edit", edit_article_path(article) %> |

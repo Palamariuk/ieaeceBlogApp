@@ -1,15 +1,26 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<div class="article-comment">
+  <div class="comment-heading">
+    <p class="comment-author"><%= comment.commenter %></p>
+    <p class="m-0">
+      <%= comment.created_at %>
+    </p>
 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
+  </div>
+  <div class="comment-body">
+    <p><%= comment.body %></p>
+  </div>
+  <br>
+</div>
 
 <p>
   <%= link_to 'Destroy Comment', [comment.article, comment],
               method: :delete,
               data: { confirm: "Are you sure?" } %>
 </p>
+
+<style>
+  .article-comment{
+      border-left: 5px solid aquamarine;
+      padding-left: 5px;
+  }
+</style>
