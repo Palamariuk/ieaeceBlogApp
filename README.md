@@ -1,16 +1,17 @@
 # ieaeceBlog web application
 
-## Done: 
+## Tasks: 
 
-+ getting started - 5
-+ pagination - 2
-+ authentication - 2
-+ authorization - 3
-+ admin mode - 1
-+ searching - 2 
-+ images - 2
-+ cloud - 2
-+ sorting - 2 
+* [x] getting started - 5
+* [x] pagination - 2
+* [x] authentication - 2
+* [x] authorization - 3
+* [x] admin mode - 1
+* [x] searching - 2 
+* [x] images - 2
+* [x] cloud - 2
+* [x] sorting - 2 
+* [ ] docker - 3
 
 ### Additional tasks: 
 
@@ -19,8 +20,4 @@
 ## Total for now: 
 
 ​			21 points / 20 + likes
-
-## In progress:
-
-+ docker
 
