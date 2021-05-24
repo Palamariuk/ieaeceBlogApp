@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
 
+  attr_reader :article
   #http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
 
   before_action :authenticate_account!, only: %i[new create edit update destroy]
@@ -12,11 +13,21 @@ class ArticlesController < ApplicationController
 
     @page = params.fetch(:page, 0).to_i
     @sortorder = params.fetch(:sort, 'desc')
+    @category = params.fetch(:category, 'All')
     @query = "created_at #{@sortorder}"
-    @articles = Article.order(@query)
-                       .with_authors
-                       .paginate(page: params[:page], per_page: ARTICLES_PER_PAGE)
-                       .search(params[:query])
+
+    @articles = if @category == 'All'
+                  Article.order(@query)
+                         .with_authors
+                         .paginate(page: params[:page], per_page: ARTICLES_PER_PAGE)
+                         .search(params[:query])
+                else
+                  Article.order(@query)
+                         .where(category: @category)
+                         .with_authors
+                         .paginate(page: params[:page], per_page: ARTICLES_PER_PAGE)
+                         .search(params[:query])
+                end
 
   end
 
@@ -39,6 +50,7 @@ class ArticlesController < ApplicationController
     @article.title = article_params[:title]
     @article.body = article_params[:body]
     @article.status = article_params[:status]
+    @article.category = article_params[:category]
     @article.author = current_account
     @article.author.username = current_account.username
 
@@ -88,7 +100,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :status, :image)
+    params.require(:article).permit(:title, :body, :status, :image, :category)
   end
 
   def set_article

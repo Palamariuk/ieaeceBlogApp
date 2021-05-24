@@ -25,6 +25,13 @@
     <%= form.label :status %><br>
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
+
+  <div>
+    <%= form.label :category, class: 'form-label' %><br>
+    <%= form.select :category, ['Scientific', 'Politics', 'TV Series', 'Movies', 'Technologies', 'Music', 'Sport', 'Other'],
+                    selected: 'Other'%>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

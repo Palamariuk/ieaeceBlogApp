@@ -6,18 +6,19 @@
 * [x] pagination - 2
 * [x] authentication - 2
 * [x] authorization - 3
-* [x] admin mode - 1
+* [x] administrator mode - 1
 * [x] searching - 2 
 * [x] images - 2
 * [x] cloud - 2
-* [x] sorting - 2 
+* [x] filtering by category - 2 
 * [ ] docker - 3
 
-### Additional tasks: 
+### Extra tasks: 
 
 + likes
++ sorting asc/desc by created_at
 
 ## Total for now: 
 
-​			21 points / 20 + likes
+​			21 points / 20 + points for extra tasks
 
