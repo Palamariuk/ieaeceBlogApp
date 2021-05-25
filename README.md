@@ -26,5 +26,9 @@
 
 # Main page of the blog:
 
-<img src="/home/palamariuk/.config/Typora/typora-user-images/image-20210525224224385.png" alt="image-20210525224224385" style="zoom:80%;" />
+<img src="./images/photo_2021-05-24_21-57-07.jpg" alt="image-20210525224224385" style="zoom:80%;" />
+
+
+
+
 
