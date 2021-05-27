@@ -1,3 +1,5 @@
+
+
 # ieaeceBlog web application
 
 ## Tasks: 
@@ -30,5 +32,78 @@
 
 
 
+# A lot of screens about my blog
 
 
+
++ Searching, sorting and filtering form + pagination: 
+
+![pic1](./images/pic1.jpg)
+
+
+
++ Sorting articles asc by created_at
+
+  ![pic2](./images/pic2.jpg)
+
+  
+
++ Article with category Scientific 
+
+  ![pic3](./images/pic3.jpg)
+
+  
+
++ Creating new article (on photo from local storage)
+
+  ![pic4](./images/pic4.jpg)
+
+  
+
+  
+
++ Show article page
+
+  ![pic5](./images/pic5.jpg)
+
+  
+
++ Likes and comments
+
+  ![pic6](./images/pic6.jpg)
+
+  
+
++ The new article on the main page 
+
+  ![pic7](./images/pic7.jpg)
+
+  
+
++ Search article with "Test" word
+
+  ![pic8](./images/pic8.jpg)
+
+  
+
++ The photo is stored on a cloud
+
+  ![pic9](./images/pic9.jpg)
+
+  
+
++ Admin can edit and destroy all of the articles
+
+  ![pic10](./images/pic10.jpg)
+
+  
+
++ But user can do it only with its own articles
+
+  ![pic11](./images/pic11.jpg)
+
+  
+
++ User also cannot destroy other comments and can add likes
+
+  ![pic12](./images/pic12.jpg)
